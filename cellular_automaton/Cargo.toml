@@ -1,0 +1,12 @@
+[package]
+name = "automaton"
+version = "0.1.0"
+edition = "2021"
+
+authors = ["Charlotte Badesco <charlotte.badesco•epitech.eu>"]
+description = "Un projet Rust pour afficher un automate cellulaire dans une fenêtre interactive."
+license = "MIT"
+
+[dependencies]
+rand = "0.8"       
+minifb = "0.20"    
