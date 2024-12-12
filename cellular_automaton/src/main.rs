@@ -35,10 +35,9 @@ pub struct Grid {
     cols: usize,
     cells: Vec<Cell>,
 }
-
 impl Grid {
     pub fn new(rows: usize, cols: usize) -> Self {
-        let mut rng = rand::thread_rng();
+        let mut rng=rand::thread_rng();
         let cells = (0..rows * cols)
             .map(|_| Cell::new(rng.gen_bool(0.5)))
             .collect();
