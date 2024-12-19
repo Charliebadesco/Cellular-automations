@@ -12,4 +12,7 @@ to compile the C++ cellular automata, you need to use
 g++ -o Main Main.cpp -I/path/to/sfml/include -L/path/to/sfml/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 in your terminal and launch the Main constructor with : 
-./Main
+./CellularC++
+
+
+to run the rust cellular automaton, you must use cargo and "cargo run" command in your terminal 
