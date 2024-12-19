@@ -17,7 +17,7 @@ public:
     Automata(int width, int height, const Rule& rule)
         : width(width), height(height), grid(height, std::vector<int>(width, 0)), rule(rule) {}
 
-    void gridInitialisation(float livingDensity = 0.2f) {
+    void gridInitialisation(float livingDensity = 0.5f) {
         std::mt19937 gen(static_cast<unsigned>(time(0)));
         std::uniform_real_distribution<> distrib(0.0, 1.0);
 

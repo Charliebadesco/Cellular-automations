@@ -3,16 +3,23 @@
 #include "Automata.h"
 #include "Rule.h"
 #include "ConwayRules.h"
+#include "MazeRules.h"
+#include "HighLifeRules.h"
+#include "ReplicatorRules.h"
+
 
 int main() {
-    int width = 100;
-    int height = 80;
-    float hexRadius = 10.f;
+    int width = 300;
+    int height = 200;
+    float squareSize = 10.f; 
     float livingDensity = 0.2f;
 
-
     ConwayRules conwayRules;
-    Automata Automata(width, height, conwayRules);
+    HighLifeRules highLifeRules;
+    MazeRules mazeRules;
+    ReplicatorRules replicatorRules;
+
+    Automata Automata(width, height, mazeRules);
 
     sf::Music music;
     if (!music.openFromFile("Pufino.mp3")) {
@@ -21,16 +28,15 @@ int main() {
     music.setLoop(true);
     music.play();
 
-    //Automata.Automata(width, height, conwayRules);
     Automata.gridInitialisation(livingDensity);
 
-    float windowWidth = width * hexRadius * 1.5f;
-    float windowHeight = height * hexRadius * 1.732f; // Height multiplier for hexagon grid
+    float windowWidth = width * squareSize;
+    float windowHeight = height * squareSize;
     sf::RenderWindow window(sf::VideoMode(static_cast<int>(windowWidth), static_cast<int>(windowHeight)), 
-                            "Hexagonal Cellular Automaton");
+                            "Cellular Automaton");
 
     sf::Clock clock;
-    const int frameTimeMs = 100; 
+    const int frameTimeMs = 300; 
 
     while (window.isOpen()) {
         sf::Event event;
@@ -51,12 +57,12 @@ int main() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (grid[y][x] == 1) {
-                    sf::CircleShape hexagon(hexRadius, 6); 
-                    float xOffset = (x + (y % 2) * 0.5f) * hexRadius * 1.5f;
-                    float yOffset = y * hexRadius * 1.732f;
-                    hexagon.setPosition(xOffset, yOffset);
-                    hexagon.setFillColor(sf::Color::Green);
-                    window.draw(hexagon);
+                    sf::RectangleShape square(sf::Vector2f(squareSize, squareSize)); 
+                    float xOffset = x * squareSize; 
+                    float yOffset = y * squareSize; 
+                    square.setPosition(xOffset, yOffset);
+                    square.setFillColor(sf::Color::Green); 
+                    window.draw(square); 
                 }
             }
         }
