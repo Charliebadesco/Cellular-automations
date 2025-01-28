@@ -9,17 +9,17 @@
 
 
 int main() {
-    int width = 300;
-    int height = 200;
-    float squareSize = 10.f; 
-    float livingDensity = 0.2f;
+    int width = 600;
+    int height = 400;
+    float squareSize = 5.f; 
+    float livingDensity = 0.5f;
 
     ConwayRules conwayRules;
     HighLifeRules highLifeRules;
     MazeRules mazeRules;
     ReplicatorRules replicatorRules;
 
-    Automata Automata(width, height, mazeRules);
+    Automata Automata(width, height, highLifeRules);
 
     sf::Music music;
     if (!music.openFromFile("Pufino.mp3")) {
