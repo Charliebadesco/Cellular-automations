@@ -1,4 +1,5 @@
-# Biograte
+# Cellular automatons
+
 
 
 This code is an open source creation of Charlie Badesco
